@@ -37,10 +37,11 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline SUCCESS'
+            slackSend message: "✅ Jenkins SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
         }
         failure {
-            echo 'Pipeline FAILED'
+            slackSend message: "❌ Jenkins FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
         }
     }
+
 }
